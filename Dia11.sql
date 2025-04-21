@@ -314,9 +314,11 @@ BEGIN
 
     if(v_mes = 1)THEN
     v_mes := 13;
+    v_ano:= v_ano-1;
     end if;
     if(v_mes = 2)THEN
      v_mes := 14;
+     v_ano:= v_ano-1;
     end if;
 
     v_resultadopaso1:=((v_mes + 1)*3)/5;
@@ -328,7 +330,7 @@ BEGIN
     v_resultadopaso4:= v_ano/400 ;
      dbms_output.put_line('v_resultadopaso4 ' || v_resultadopaso4);
     v_resultadopaso5:= v_dia + (v_mes*2) +v_ano+v_resultadopaso1+v_resultadopaso2-v_resultadopaso3 +v_resultadopaso4 + 2;
-     dbms_output.put_line('v_resultadopaso5 ' || v_resultadopaso7);
+     dbms_output.put_line('v_resultadopaso5 ' || v_resultadopaso5);
     v_resultadopaso6:= v_resultadopaso5/7;
     dbms_output.put_line('v_resultadopaso6 ' || v_resultadopaso6);
     v_resultadopaso7:= v_resultadopaso5 - (v_resultadopaso6*7);
