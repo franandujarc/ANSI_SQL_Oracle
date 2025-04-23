@@ -64,7 +64,10 @@ select  sala_cod,count(*) as numenfermeras from plantilla where funcion= 'ENFERM
 -- select tabla1.campo1, tabla1.campo2, tabla2.campo1, tabla2.campo2 from tabla1 inner join tabla2 on tabla1.campo_relacion = tabla2.campo_relacion;
 -- EJEMPLO (MOSTRAR EL APELLIDO, EL OFICIO DE LOS EMPLEADOS JUNTO AL NOMBRE DE DEPARTAMENTO Y LOCALIDAD )
 
-select emp.apellido, emp.oficio , dept.dnombre, dept.loc from emp inner join dept on emp.dept_no = dept.dept_no;
+select emp.apellido, emp.oficio , dept.dnombre, dept.loc 
+from emp 
+inner join dept 
+on emp.dept_no = dept.dept_no;
 
 -- DENTRO DE ORACLE TENEMOS OTRA SINTAXIS PARA LOS JOIN ( NO ES EFICIENTE ESTA CONSULTA)
 
@@ -83,12 +86,13 @@ select e.apellido, e.oficio , d.dnombre, d.loc from emp e inner join dept d on e
 -- TENEMOS MULTIPLES TIPOS DE JOIN EN LAS BASES DE DATOS 
 
 /*
-        TIPOS DE JOIN  : 
+    TIPOS DE JOIN  : 
     INNER JOIN   -> COMBINA LOS RESULTADOS DE LAS 2 TABLAS
     LEFT JOIN    -> COMBINA LAS 2 TABLAS Y TAMBIEN LA TABLA IZQUIERDA
     RIGHT JOIN   -> COMBINA LAS 2 TABLAS Y TAMBIEN LA TABLA DERECHA
     FULL JOIN    -> COMBINA LAS 2 TABLAS Y  FUERZA LAS 2 TABLAS
-    CROSS JOIN   -> PRODUCTO CARTESIANO, COMBINA CADA DATO DE UNA TABLA CON LOS OTROS DATOS DE LA TABLA (NO USA ON)
+    CROSS JOIN   -> PRODUCTO CARTESIANO, COMBINA CADA DATO DE UNA TABLA 
+                    CON LOS OTROS DATOS DE LA TABLA (NO USA ON)
    
 */
 
@@ -99,8 +103,10 @@ select * from emp;
 select e.apellido, e.oficio , d.dnombre, d.loc from emp e inner join dept d on e.dept_no = d.dept_no order by d.loc;
 
 --INSERT INTO emp VALUES('1111', 'sin dept', 'EMPLEADO', 7919, TO_DATE('06-02-1995', 'DD-MM-YYYY'), 171000, 0, 50);
-
-select e.apellido, d.dnombre, d.loc from emp e cross join dept d  order by d.loc;
+--NO NECESITA ON EL CROSS
+select e.apellido, d.dnombre, d.loc 
+from emp e 
+cross join dept d ;
 
 -- EJEMPLO (MEDIA SALARIAL DE LOS DOCTORES POR HOSPITAL MOSTRANDO EL NOMBRE )
 
