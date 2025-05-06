@@ -165,9 +165,9 @@ AS
     longitud number;
     digito number;
     numero_cubo number;
-    suma number;
+    suma number :=0;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('EL NUMEOR INTRODUCIDO ES' || v_numero_texto );
+    DBMS_OUTPUT.PUT_LINE('EL NUMERO INTRODUCIDO ES ' || v_numero_texto );
     longitud := length(v_numero_texto);
     
     FOR i in 1..longitud LOOP
@@ -189,38 +189,8 @@ BEGIN
     
 END;
 
-
-DECLARE
-
-    v_numero_texto varchar2(100):= to_char(548);
-    longitud number;
-    digito number;
-    suma number;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('EL NUMEOR INTRODUCIDO ES ' || v_numero_texto );
-    longitud := length(v_numero_texto);
-    
-    FOR i in 1..longitud LOOP
-    digito:= to_number(substr(v_numero_texto,i,1));
-    -- DBMS_OUTPUT.PUT_LINE('EL DIGITO ' || digito || ' elevado al cubo es '||  power(digito,3));
-    suma:= suma + power(digito,3);
-     DBMS_OUTPUT.PUT_LINE('suma ' || suma );
-    END LOOP;
-
-    DBMS_OUTPUT.PUT_LINE('por lo que la suma es ' || to_char(suma));
-
-    IF suma=548 THEN
-      DBMS_OUTPUT.PUT_LINE('ES NARCISISTA' );
-    ELSE
-      DBMS_OUTPUT.PUT_LINE('NO ES NARCISISTA' );
-    END IF;
-    
-    --RETURN suma;
-    
-END;
-
-BEGIN
-    NUMERO_NARCISISTA(548);
+   DBMS_OUTPUT.PUT_LINE( NUMERO_NARCISISTA(231));
 END;
 
 
