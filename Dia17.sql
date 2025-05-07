@@ -252,7 +252,7 @@ as
         cursor doctores is select * from doctor;
     BEGIN  
         FOR v_fila in doctores LOOP
-            UPDATE doctor set salario = salario + dbms_random.value(1,numero) where doctor_no = v_fila.doctor_no ;
+            UPDATE doctor set salario = salario + trunc(dbms_random.value(1,numero)) where doctor_no = v_fila.doctor_no ;
         END LOOP;
     END;
 
@@ -261,7 +261,7 @@ as
         cursor doctores is select * from doctor;
     BEGIN
         FOR v_fila in doctores LOOP
-            UPDATE doctor set salario = salario + dbms_random.value(1,f_obtener_limite_ramdom(nvl(v_fila.salario,0))) where doctor_no = v_fila.doctor_no ;
+            UPDATE doctor set salario = salario + trunc(dbms_random.value(1,f_obtener_limite_ramdom(nvl(v_fila.salario,0)))) where doctor_no = v_fila.doctor_no ;
         END LOOP;
     END;
 
@@ -277,7 +277,10 @@ as
 END pk_subida_salario_doctor;
 
 select * from doctor;
-
+DECLARE
+v_ramdom number;
 BEGIN
-pk_subida_salario_doctor.subir_salario_salario;
+--pk_subida_salario_doctor.subir_salario_salario;
+v_ramdom := trunc(dbms_random.value(1,50));
+DBMS_OUTPUT.PUT_LINE('There are number random ' || v_ramdom );
 END;
