@@ -78,6 +78,7 @@ END;
 
 --------------------- TRIGERS -----------------------
 -----INSERT
+
 create or replace trigger tr_dept_before_insert
 before INSERT
 on dept
@@ -92,6 +93,7 @@ END;
 insert into dept values(111,'NUEVO','TOLEDO');
 
 ----- DELETE
+drop trigger tr_dept_before_update;
 create or replace trigger tr_dept_before_delete
 before DELETE
 on dept
@@ -106,7 +108,7 @@ END;
 delete from dept where dept_no = 111;
 
 -- update
-
+drop trigger tr_dept_before_update;
 create or replace trigger tr_dept_before_update
 before update
 on dept
@@ -122,6 +124,7 @@ END;
 update dept set loc = 'cambio' where dept_no =111;
 
 --- control del doctor
+drop trigger tr_doctor_control_salario_update;
 create or replace trigger tr_doctor_control_salario_update
 before update
 on doctor
@@ -156,7 +159,7 @@ BEGIN
 END;
 
 insert into dept values(66,'MILAN','BARCELONA');
-
+drop trigger tr_dept_control_localidades;
 create or replace trigger tr_dept_control_localidades
 before INSERT
 on dept
